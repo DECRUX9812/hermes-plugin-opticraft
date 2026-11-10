@@ -1,0 +1,40 @@
+name: opticraft
+version: "1.0.0"
+manifest_version: 2
+api_version: 1
+description: >-
+  Real optical design inside Hermes: a Sellmeier glass catalogue, an exact
+  meridional ray trace, a cemented-achromat optimizer, spot diagrams against the
+  Airy disc, and a build-tolerance check. Ask for a lens and it solves the
+  achromatic condition from the two glasses' Sellmeier data, then optimizes the
+  single free bend (the internal radius) against the computed RMS spot — the
+  radii are derived, not copied from a catalogue — and reports the same focal
+  length as a single element so you can see exactly what the second element buys
+  (typically 50+ times less colour error and the same on spot size). It also
+  measures what the paraxial formula hides: spherical aberration, the marginal
+  focus, the blur against the diffraction limit, and how far the focus moves if
+  the mount is 0.05 mm out. The engine is deterministic and offline: geometry,
+  dispersion and aberrations are computed, never narrated. Disclosure — no
+  network calls and no Python dependencies (it needs numpy-free pure Python);
+  it reads only its own bundled glass data and writes nothing at all.
+author: Ritesh Patel (DECRUX9812)
+license: MIT
+homepage: https://github.com/DECRUX9812/hermes-plugin-opticraft
+requires_hermes: ">=0.22"
+kind: standalone
+tags: [optics, lens, physics, engineering, design, telescope, deterministic, offline]
+platforms:
+  - linux
+  - macos
+  - windows
+provides_tools:
+  - opticraft_design
+  - opticraft_trace
+  - opticraft_spot
+  - opticraft_colour
+  - opticraft_tolerance
+  - opticraft_glass
+provides_hooks: []
+provides_middleware: []
+requires_env: []
+config_schema: {}
